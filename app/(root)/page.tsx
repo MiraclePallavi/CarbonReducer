@@ -1,7 +1,16 @@
-// app/page.tsx
+import { getloggedInUser } from "@/lib/action/users.action";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
-export default function HomePage() {
+export default async function HomePage() {
+    const loggedInUser = getloggedInUser();
+    
+    if(await loggedInUser){
+      redirect("/Dashboard");
+    }
+    else{
+      redirect("/sign-in");
+    }
   return (
     <main className="min-h-screen flex flex-col items-center justify-center">
       <h1 className="text-4xl mb-4">Welcome to Carbon Tracker 🌿</h1>
