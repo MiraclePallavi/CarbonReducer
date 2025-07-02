@@ -1,7 +1,7 @@
-'use server'
+
 import { Client, Account, Databases, Users } from "node-appwrite";
 import { cookies } from "next/headers";
-
+import * as sdk from "node-appwrite";
 
 
 export async function createSessionClient() {
@@ -20,6 +20,9 @@ export async function createSessionClient() {
   return {
     get account() {
       return new Account(client);
+    },
+    get database() {
+      return new Databases(client);
     },
   };
 }
@@ -42,3 +45,9 @@ export async function createAdminClient() {
     }
   };
 }
+const client = new sdk.Client();
+
+client.setEndpoint(process.env.ENDPOINT!).setProject(process.env.PROJECT_ID!).setKey(process.env.API_KEY!);
+
+export const databases = new sdk.Databases(client);
+export const users = new sdk.Users(client);

@@ -1,57 +1,75 @@
 import React from 'react'
-import {FormControl, FormField, FormLabel, FormMessage} from './ui/form'
-import { Input } from './ui/input'
 import { Control, FieldPath } from 'react-hook-form'
-import { z } from 'zod'  
-import { weeklyUpdateSchema  } from '@/lib/validation'
-const formSchema = weeklyUpdateSchema;
-interface Custominput{
-    control:Control<z.infer<typeof formSchema>>,
-    name:FieldPath<z.infer<typeof formSchema>>,
-    label:string,
-    placeholder:string,
-    className?: string
+import { z } from 'zod'
+import { FormField, FormLabel, FormControl, FormMessage } from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { CarbonFootprintSchema } from '@/lib/validation'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+// Use z.input to represent the raw form shape (optional inputs)
+type CarbonInput = z.input<typeof CarbonFootprintSchema>
+
+interface WeeklyCustomInputProps {
+  control: Control<CarbonInput>
+  name: FieldPath<CarbonInput>
+  label: string
+  placeholder: string
+  options?: string[]
+  className?: string
 }
 
-interface Custominput{
-    control:Control<z.infer<typeof formSchema>>,
-    name:FieldPath<z.infer<typeof formSchema>>,
-    label:string,
-    placeholder:string,
-    className?: string
-}
-
-const Custominput = ({control, name, label,placeholder,className}:Custominput) => {
+const WeeklyCustomInput: React.FC<WeeklyCustomInputProps> = ({
+  control,
+  name,
+  label,
+  placeholder,
+  options,
+  className = '',
+}) => {
   return (
-    <div>
-       <FormField
-          control={control}
-          name={name}
-          render={({ field }) => (
-            <div className='form-item'>
-                <FormLabel className='form-label'>
-                    {label}
-                </FormLabel>
-                <div className='flex w-full flex-col'>
-                    <FormControl>
-                        <Input 
-                        placeholder={placeholder}
-                        className='input-class'
-                        type={'number'}
-                        {...field}
-                        />
-                        
-                    </FormControl>
-                    <FormMessage
-                    className='form-message mt-2'/>
-
-                </div>
-            </div>
-          )}
-        />
-       
-    </div>
+    <FormField
+      control={control}
+      name={name}
+      render={({ field }) => (
+        <div className="flex flex-col">
+          <FormLabel>{label}</FormLabel>
+          <FormControl>
+            {options ? (
+             <Select 
+  onValueChange={(value) => field.onChange(value)} 
+  defaultValue={field.value?.toString() || ""}
+>
+  <SelectTrigger className="w-full p-2 backdrop-blur-md bg-transparent font-medium">
+    <SelectValue placeholder={placeholder} />
+  </SelectTrigger>
+  <SelectContent className="backdrop-blur-md bg-transparent text-white font-medium">
+    {options.map((opt) => (
+      <SelectItem key={opt} value={opt} className="backdrop-blur-md bg-transparent">
+        {opt}
+      </SelectItem>
+    ))}
+  </SelectContent>
+</Select>
+            ) : (
+              <Input
+                {...field}
+                type="number"
+                placeholder={placeholder}
+                className={className}
+              />
+            )}
+          </FormControl>
+          <FormMessage className="mt-1" />
+        </div>
+      )}
+    />
   )
 }
 
-export default Custominput
+export default WeeklyCustomInput

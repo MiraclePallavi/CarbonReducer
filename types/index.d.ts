@@ -8,6 +8,7 @@ declare type SearchParamProps = {
   
   
   declare interface CreateUserParams {
+  
      firstName: string;
    lastName: string;
    address1:string;
@@ -15,10 +16,12 @@ declare type SearchParamProps = {
    state:string;
    postalCode:string;
    email:string;
+    avatar?:     string;
    //sign-in
    username:string;
 
    password:string;
+   
   }
   declare interface User extends CreateUserParams {
     $id: string;

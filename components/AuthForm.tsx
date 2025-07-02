@@ -45,6 +45,7 @@ const onSubmit = async (data: z.infer<typeof signInSchema | typeof signUpSchema>
     } else {
       const signUpData = data as z.infer<typeof signUpSchema>;
       await SignUp({
+       
         firstName: signUpData.firstName,
         lastName: signUpData.lastName,
         address1: signUpData.address1,
@@ -56,7 +57,7 @@ const onSubmit = async (data: z.infer<typeof signInSchema | typeof signUpSchema>
         password: signUpData.password,
       });
       setuser(await getloggedInUser());
-      router.push("/Dashboard");
+      router.push("/Dashboard/form");
     }
   } catch (error) {
     console.error(error);
