@@ -1,36 +1,155 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h1 align="center">🌱 CARBONREDUCER</h1>
+<p align="center"><i>Transforming Data into a Greener Future</i></p>
 
-## Getting Started
+<p align="center">
+  <img src="https://img.shields.io/badge/last%20commit-today-brightgreen" />
+  <img src="https://img.shields.io/badge/typescript-88.5%25-blue" />
+  <img src="https://img.shields.io/badge/languages-4-purple" />
+</p>
 
-First, run the development server:
+---
+
+## 🛠️ Built with the tools and technologies
+
+<p align="center">
+  <img src="https://img.shields.io/badge/-JSON-black?logo=json&logoColor=white" />
+  <img src="https://img.shields.io/badge/-Markdown-000000?logo=markdown&logoColor=white" />
+  <img src="https://img.shields.io/badge/-npm-red?logo=npm&logoColor=white" />
+  <img src="https://img.shields.io/badge/-Mongoose-orange?logo=mongoose&logoColor=white" />
+  <img src="https://img.shields.io/badge/-scikit--learn-f7931e?logo=scikit-learn&logoColor=white" />
+  <img src="https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=black" />
+  <img src="https://img.shields.io/badge/-NumPy-013243?logo=numpy&logoColor=white" />
+  <img src="https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white" />
+  <br />
+  <img src="https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/-Zod-3b82f6" />
+  <img src="https://img.shields.io/badge/-ESLint-4B32C3?logo=eslint&logoColor=white" />
+  <img src="https://img.shields.io/badge/-pandas-150458?logo=pandas&logoColor=white" />
+  <img src="https://img.shields.io/badge/-Axios-5A29E4?logo=axios&logoColor=white" />
+  <img src="https://img.shields.io/badge/-dateFns-FF69B4" />
+  <img src="https://img.shields.io/badge/-React%20Hook%20Form-EC5990?logo=reacthookform&logoColor=white" />
+  <img src="https://img.shields.io/badge/-Appwrite-F02E65?logo=appwrite&logoColor=white" />
+</p>
+
+---
+
+## 📑 Table of Contents
+
+- [Overview](#overview)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running the App](#running-the-app)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
+
+## 🔍 Overview
+
+CarbonReducer is a full-stack, AI-powered platform that tracks users' carbon emissions based on their habits and lifestyle choices. It offers personalized insights, visual analytics, and practical recommendations to promote more sustainable living.
+
+## 🚀 Getting Started
+
+### 📋 Prerequisites
+
+This project requires the following dependencies:
+
+- **Programming Language:** TypeScript
+- **Package Manager:** Npm, Pip
+
+---
+
+### 🛠️ Installation
+
+Build CarbonReducer from the source and install dependencies:
+
+1. 🔁 Clone the repository:
+
+```bash
+git clone https://github.com/MiraclePallavi/CarbonReducer
+````
+
+2. 📁 Navigate to the project directory:
+
+```bash
+cd CarbonReducer
+```
+
+3. 🔧 Install frontend dependencies:
+
+```bash
+npm install
+```
+
+4. 🐍 Set up the Python backend:
+
+```bash
+cd python-backend
+python -m venv .venv
+source .venv/bin/activate  # On Windows use .venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+5. ⚙️ Configure Appwrite (authentication and DB):
+
+Make sure the Appwrite server is running and your `.env.local` file contains:
+
+```env
+NEXT_PUBLIC_APPWRITE_ENDPOINT=https://<your-endpoint>
+NEXT_PUBLIC_APPWRITE_PROJECT=<your-project-id>
+```
+
+6. 🔌 Start the servers:
+
+Start the backend server:
+
+```bash
+cd python-backend
+uvicorn app:app --reload
+```
+
+Start the frontend server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> ✅ The application will be running at [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Let me know if you also want the README header or feature section code to match the style you showed earlier.
+```
 
-## Learn More
+## 🚀 Features
 
-To learn more about Next.js, take a look at the following resources:
+- 🌎 Tracks and compares personal carbon footprint over time  
+- 📊 Visualizes trends and emissions statistics  
+- 🧾 Provides actionable recommendations to reduce emissions  
+- 🔐 Authenticated user sessions using Appwrite  
+- ☁️ MongoDB storage for historical user data  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🧰 Tech Stack
 
-## Deploy on Vercel
+- Frontend: React, Next.js, Tailwind CSS, shadcn/ui  
+- Backend: FastAPI, Python (NumPy, pandas, scikit-learn)  
+- Auth & DB: Appwrite, MongoDB with Mongoose  
+- Dev Tools: TypeScript, Zod, ESLint, Axios, date-fns  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🤝 Contributing
+
+Feel free to open issues or submit pull requests! Contributions are welcome.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
